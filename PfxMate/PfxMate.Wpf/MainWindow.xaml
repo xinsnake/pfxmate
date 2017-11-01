@@ -1,0 +1,40 @@
+﻿<Window x:Class="PfxMate.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PfxMate.Wpf"
+        mc:Ignorable="d"
+        Title="PfxMate" Height="350" Width="525" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Padding="10" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="260*"/>
+            <ColumnDefinition Width="259*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="17*"/>
+            <RowDefinition Height="114*"/>
+            <RowDefinition Height="21*"/>
+        </Grid.RowDefinitions>
+        <RichTextBox x:Name="RichTextBoxCertInfo" Margin="10,5" BorderThickness="1" FontFamily="Courier New" FontSize="12" Grid.ColumnSpan="2" Grid.Row="2" MinWidth="9" IsReadOnly="True" IsReadOnlyCaretVisible="True" VerticalScrollBarVisibility="Visible" Padding="5,10" Background="#FFEEEEEE"/>
+        <Button x:Name="CopyTumbprintLowerBtn" Content="Copy Thumbprint (lowercase)" Click="Button_Click_CopyLower" FontSize="12" Grid.Row="3" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="10,10,74,10" Height="22" IsEnabled="False"/>
+        <Button x:Name="CopyTumbprintUpperBtn" Content="Copy Thumbprint (UPPERCASE)" VerticalAlignment="Center" Click="Button_Click_CopyUpper" FontSize="12" Grid.Row="3" Margin="191,10,146,10" Height="22" Grid.ColumnSpan="2" IsEnabled="False"/>
+        <Button x:Name="CopyAsBase64Btn" Content="Copy As Base64" VerticalAlignment="Center" Click="Button_Click_CopyBase64" FontSize="12" Grid.Row="3" Margin="118,10,6,10" Height="22" Grid.Column="1" IsEnabled="False"/>
+        <DockPanel HorizontalAlignment="Left" LastChildFill="False" Margin="0" VerticalAlignment="Top" Width="519" Grid.ColumnSpan="2" Height="20">
+            <Menu VerticalAlignment="Top" Width="519">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Load PFX Certificate" Click="MenuItem_LoadPfxCert_Click" />
+                    <MenuItem Header="_Load Base64 Certificate" Click="MenuItem_LoadBase64Cert_Click" />
+                    <Separator />
+                    <MenuItem Header="_Close" Click="MenuItem_Close_Click"/>
+                </MenuItem>
+                <MenuItem Header="_Help">
+                    <MenuItem Header="_About" Click="MenuItem_About_Click"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        <Label x:Name="LabelCertLoaded" Content="" Margin="6,5" Grid.Row="1" Grid.ColumnSpan="2"/>
+
+    </Grid>
+</Window>

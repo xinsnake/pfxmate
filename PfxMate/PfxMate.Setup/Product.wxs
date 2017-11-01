@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="PfxMate" Language="1033" Version="1.0.2.0" Manufacturer="Bupa DevOps Team"
+           UpgradeCode="e8b08697-8275-49a1-9c72-8ba0c73efb28">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+    <MajorUpgrade AllowDowngrades="yes" Schedule="afterInstallInitialize"/>
+    <Media Id="1" Cabinet="PfxMate.cab" EmbedCab="yes" />
+
+    <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
+    <Property Id="WIXUI_INSTALLDIR" Value="APPLICATIONROOTDIRECTORY" />
+    <UI>
+      <UIRef Id="WixUI_InstallDir" />
+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="LicenseAgreementDlg">1</Publish>
+    </UI>
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="APPLICATIONROOTDIRECTORY" Name="PfxMate"/>
+      </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="APPLICATIONPROGRAMSFOLDER" Name="PfxMate"/>
+      </Directory>
+      <Component Id="RegistryEntries" Guid="9b818fe0-b0d6-47ea-8659-99296521b0ee">
+        <RegistryKey Root="HKCR" Key="PfxMate\shell\open\command" Action="createAndRemoveOnUninstall">
+          <RegistryValue Type="string" Value='"C:\Program Files (x86)\PfxMate\PfxMate.exe" "Open" "%1"' />
+        </RegistryKey>
+        <RegistryKey Root="HKCR" Key=".pfx\OpenWithProgids" Action="createAndRemoveOnUninstall">
+          <RegistryValue Type="string" Name="PfxMate" Value="" />
+        </RegistryKey>
+      </Component>
+    </Directory>
+
+    <DirectoryRef Id="APPLICATIONROOTDIRECTORY">
+      <Component Id="PfxMate.exe" Guid="fe981c10-2e0e-4148-9d5d-f03ad8dc0a4e">
+        <File Id="PfxMate.exe" Source="..\PfxMate.Wpf\bin\Release\PfxMate.exe" KeyPath="yes"/>
+      </Component>
+      <Component Id="PfxMate.exe.config" Guid="2164378a-587f-4ea7-9c20-fd13fe4fc2fb">
+        <File Id="PfxMate.exe.config" Source="..\PfxMate.Wpf\bin\Release\PfxMate.exe.config" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id="APPLICATIONPROGRAMSFOLDER">
+      <Component Id="ApplicationShortcut" Guid="59b3926f-e587-4b78-8c8e-4231a143c348">
+        <Shortcut Id="ApplicationStartMenuShortcut" Name="PfxMate" Description="PfxMate" Target="[#PfxMate.exe]" WorkingDirectory="APPLICATIONROOTDIRECTORY"/>
+        <RemoveFolder Id="APPLICATIONPROGRAMSFOLDER" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\Microsoft\PfxMate" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+
+    <Feature Id="MainApplication" Title="Main Application" Level="1">
+      <ComponentRef Id="PfxMate.exe" />
+      <ComponentRef Id="PfxMate.exe.config" />
+      <ComponentRef Id="RegistryEntries" />
+      <ComponentRef Id="ApplicationShortcut" />
+    </Feature>
+	</Product>
+</Wix>
