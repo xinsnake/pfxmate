@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("PfxMate")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Bupa DevOps Team")]
+[assembly: AssemblyCompany("Xinyun Zhou")]
 [assembly: AssemblyProduct("PfxMate")]
-[assembly: AssemblyCopyright("Copyright © Bupa ANZ 2017")]
+[assembly: AssemblyCopyright("Copyright © Xinyun Zhou 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

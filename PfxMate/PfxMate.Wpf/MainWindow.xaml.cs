@@ -64,7 +64,7 @@ namespace PfxMate.Wpf
 
                     certPass = pwdWindow.Password;
                 }
-                
+
                 try
                 {
                     collection = new X509Certificate2Collection();
@@ -205,7 +205,7 @@ namespace PfxMate.Wpf
         }
         private void MenuItem_About_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("PfxMate - Bupa ANZ DevOps", "About");
+            MessageBox.Show("PfxMate - Xinyun Zhou", "About");
         }
     }
 }
