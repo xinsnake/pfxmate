@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="PfxMate" Language="1033" Version="1.0.3.0" Manufacturer="Bupa DevOps Team"
+	<Product Id="*" Name="PfxMate" Language="1033" Version="1.0.3.0" Manufacturer="Xinyun Zhou"
            UpgradeCode="e8b08697-8275-49a1-9c72-8ba0c73efb28">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
     <MajorUpgrade AllowDowngrades="yes" Schedule="afterInstallInitialize"/>
