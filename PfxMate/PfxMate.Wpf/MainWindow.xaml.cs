@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Deployment.Application;
+using System.IO;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows;
@@ -124,6 +125,7 @@ namespace PfxMate.Wpf
             CopyAsBase64Btn.IsEnabled = true;
             CopyTumbprintLowerBtn.IsEnabled = true;
             CopyTumbprintUpperBtn.IsEnabled = true;
+            ExportAsPfxBtn.IsEnabled = true;
 
             var message = "Subject:\n" + cert.Subject + "\n\n";
             message += "Issuer:\n" + cert.Issuer + "\n\n";
@@ -151,11 +153,60 @@ namespace PfxMate.Wpf
             MessageBox.Show("Base64 version of the certificate copied.", "Success");
         }
 
+        private void Button_Click_ExportPfx(object sender, RoutedEventArgs e)
+        {
+
+            var passwordDialog = new PasswordWindow();
+            var passwordResult = passwordDialog.ShowDialog();
+
+            if (passwordResult != true)
+            {
+                return;
+            }
+
+            var certPass = passwordDialog.Password;
+
+            var fileDialog = new System.Windows.Forms.SaveFileDialog()
+            {
+                Filter = @"PFX Files (*.pfx)|*.pfx"
+            };
+
+            var certPath = string.Empty;
+
+            var fileResult = fileDialog.ShowDialog();
+            switch (fileResult)
+            {
+                case System.Windows.Forms.DialogResult.OK:
+                    certPath = fileDialog.FileName;
+                    break;
+                default:
+                    break;
+            }
+
+            var certificate = collection.Export(X509ContentType.Pkcs12, certPass);
+
+            if (certificate == null)
+            {
+                MessageBox.Show("Error when exporting the cert: certificate is empty.", "Unalbe to process certificate");
+                return;
+            }
+
+            try
+            {
+                File.WriteAllBytes(certPath, certificate);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error when exporting the cert: " + ex.Message, "Unalbe to process certificate");
+            }
+        }
+        
         private void MenuItem_LoadPfxCert_Click(object sender, RoutedEventArgs e)
         {
             var fileDialog = new System.Windows.Forms.OpenFileDialog
             {
-                Filter = "PFX Files (*.pfx)|*.pfx",
+                Filter = @"PFX Files (*.pfx)|*.pfx",
                 Multiselect = false
             };
 

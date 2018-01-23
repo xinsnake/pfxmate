@@ -13,8 +13,13 @@ namespace PfxMate.Wpf
         public PasswordWindow(string certPath)
         {
             InitializeComponent();
-
             LabelCert.Content = "Password for " + certPath;
+        }
+
+        public PasswordWindow()
+        {
+            InitializeComponent();
+            LabelCert.Content = "Please enter the password:";
         }
 
         private void ButtonSubmit_Click(object sender, RoutedEventArgs e)

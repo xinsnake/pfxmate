@@ -12,15 +12,16 @@
             <ColumnDefinition Width="259*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="17*"/>
-            <RowDefinition Height="114*"/>
-            <RowDefinition Height="21*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="213*"/>
+            <RowDefinition Height="57*"/>
         </Grid.RowDefinitions>
-        <RichTextBox x:Name="RichTextBoxCertInfo" Margin="10,5" BorderThickness="1" FontFamily="Courier New" FontSize="12" Grid.ColumnSpan="2" Grid.Row="2" MinWidth="9" IsReadOnly="True" IsReadOnlyCaretVisible="True" VerticalScrollBarVisibility="Visible" Padding="5,10" Background="#FFEEEEEE"/>
-        <Button x:Name="CopyTumbprintLowerBtn" Content="Copy Thumbprint (lowercase)" Click="Button_Click_CopyLower" FontSize="12" Grid.Row="3" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="10,10,74,10" Height="22" IsEnabled="False"/>
-        <Button x:Name="CopyTumbprintUpperBtn" Content="Copy Thumbprint (UPPERCASE)" VerticalAlignment="Center" Click="Button_Click_CopyUpper" FontSize="12" Grid.Row="3" Margin="191,10,146,10" Height="22" Grid.ColumnSpan="2" IsEnabled="False"/>
-        <Button x:Name="CopyAsBase64Btn" Content="Copy As Base64" VerticalAlignment="Center" Click="Button_Click_CopyBase64" FontSize="12" Grid.Row="3" Margin="118,10,6,10" Height="22" Grid.Column="1" IsEnabled="False"/>
+        <RichTextBox x:Name="RichTextBoxCertInfo" Margin="10,5,10,10" BorderThickness="1" FontFamily="Courier New" FontSize="12" Grid.ColumnSpan="2" Grid.Row="2" MinWidth="9" IsReadOnly="True" IsReadOnlyCaretVisible="True" VerticalScrollBarVisibility="Visible" Padding="5,10" Background="#FFEEEEEE"/>
+        <Button x:Name="CopyTumbprintLowerBtn" Content="Copy Thumbprint (lowercase)" Click="Button_Click_CopyLower" FontSize="12" Grid.Row="3" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="10,1,10,34" Height="22" IsEnabled="False"/>
+        <Button x:Name="CopyTumbprintUpperBtn" Content="Copy Thumbprint (UPPERCASE)" VerticalAlignment="Center" Click="Button_Click_CopyUpper" FontSize="12" Grid.Row="3" Margin="10,1,10,34" Height="22" IsEnabled="False" Grid.Column="1"/>
+        <Button x:Name="CopyAsBase64Btn" Content="Copy As Base64" VerticalAlignment="Center" Click="Button_Click_CopyBase64" FontSize="12" Grid.Row="3" Margin="10,27,10,8" Height="22" Grid.Column="1" IsEnabled="False"/>
+        <Button x:Name="ExportAsPfxBtn" Content="Export As PFX" VerticalAlignment="Center" Click="Button_Click_ExportPfx" FontSize="12" Grid.Row="3" Margin="10,27,10,8" Height="22" IsEnabled="False"/>
         <DockPanel HorizontalAlignment="Left" LastChildFill="False" Margin="0" VerticalAlignment="Top" Width="519" Grid.ColumnSpan="2" Height="20">
             <Menu VerticalAlignment="Top" Width="519">
                 <MenuItem Header="_File">
